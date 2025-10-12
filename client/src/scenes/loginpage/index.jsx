@@ -1,5 +1,6 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
+import "./loginpage.css";
 
 const LoginPage = () => {
   const theme = useTheme();
@@ -13,7 +14,8 @@ const LoginPage = () => {
         textAlign="center"
       >
         <Typography fontWeight="bold" fontSize="32px" color="primary">
-          VishnuGram
+          SPHERE 
+          “One Sphere. Infinite Connections”
         </Typography>
       </Box>
 
@@ -25,7 +27,9 @@ const LoginPage = () => {
         backgroundColor={theme.palette.background.alt}
       >
         <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
-         Welcome to VishnuGram Boiz And Gurlz
+          Welcome to SPHERE, the Social Media for the Modern World!
+            “Your social universe”
+          
         </Typography>
         <Form />
       </Box>

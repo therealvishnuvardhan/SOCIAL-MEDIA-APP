@@ -1,11 +1,11 @@
 import Post from "../models/Post.js";
-import User from "../models/User.js";
+import User from "../models/user.js";
 
 /* CREATE */
 export const createPost = async (req, res) => {
   try {
     const { userId, description } = req.body;
-    const picturePath = req.file ? `/assets/${req.file.filename}` : req.body.picturePath;
+    const picturePath = `${req.file.filename}`;
 
     const user = await User.findById(userId);
     const newPost = new Post({
@@ -73,3 +73,4 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
