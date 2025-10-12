@@ -5,7 +5,10 @@ engage** with friends and communities. Leveraging a **MERN stack architecture** 
 friends, like and comment on content, and explore analytics in an intuitive and seamless way.
 
 ## Note :
-In the Navbar , the dark/light , logout button , and navigate to homapge buttn ( which is app name Sphere ) are functionble , remaining Notification button , Messages button , About button are just for UI demo .
+1. In the Navbar , the dark/light , logout button , and navigate to homapge buttn ( which is app name Sphere ) are functionble , remaining Notification button , Messages button , About button are just for UI demo .
+2. In the Post Widgit only .jpg , .png are acceptble but not .mp4 , .gif .
+3. As it is a Simple Mini Social Media Feed , it contains all the basic and required things .
+
    
 
 ## Table of Contents
