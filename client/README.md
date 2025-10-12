@@ -1,70 +1,160 @@
-# Getting Started with Create React App
+# SPHERE : The Connections Beyond World ( A Social Media Application)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Sphere The Connections Beyond World** project! This repository hosts a modern social media platform designed to help users **connect, share, and 
+engage** with friends and communities. Leveraging a **MERN stack architecture** and rich **interactive features**, Sphere ensures users can share posts, follow 
+friends, like and comment on content, and explore analytics in an intuitive and seamless way.
 
-## Available Scripts
+## Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Acknowledgements](#acknowledgements)
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **User Authentication**: Sign up, login, and secure authentication with JWT.  
+- **User Profiles**: View and edit profile information, profile picture.
+- **Post Creation**: Create, and delete posts with text and media.  
+- **Engagement**: Like, comment, posts.  
+- **Friend/Follow System**: Follow friends, accept/reject requests, and explore connections.  
+- **Analytics**: Track profile views and post impressions with interactive widgets.  
+- **Real-time Feed**: See posts from friends and trending content.  
+- **Responsive Design**: Works smoothly on desktop and mobile devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Node.js & npm** (v18+ recommended)  
+2. **MongoDB** (local or cloud instance)  
+3. **Git** for version control  
+4. **A code editor** (e.g., VS Code)  
+5. **Basic knowledge of React and Express** for development
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+__Step 1:__ Clone the repository
+```bash
+git clone https://github.com/YourUsername/Sphere.git
+```
+__Step 2:__ Navigate to project directory
+```bash
+cd Sphere
+```
+__Step 3:__ Install backend dependencies
+```bash
+cd server
+npm install
+```
+__Step 4:__ Set up environment variables And Create a .env file in the server folder with the following:
+```bash
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+CLOUDINARY_URL=your_cloudinary_url (optional)
+```
+__Step 5:__ Start the backend server
+```bash
+npm run dev
+or
+node index.js
+```
+__Step 6:__ Install frontend dependencies
+```bash
+cd ../client
+npm install
+```
+__Step 7:__ Start the frontend
+```bash
+npm start
+```
+## Usage
+1. Open the app in your browser at http://localhost:3000.
 
-### `npm run build`
+2. Sign up or log in to create your account.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Navigate through the feed, profile, and friends list.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Create posts by adding text or images/videos.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Engage with posts by liking, commenting, or sharing.
 
-### `npm run eject`
+6. Check your profile analytics for views and impressions.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+7. Explore other users and follow friends to see their updates in your feed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+8. To stop the backend server, press Ctrl + C in the terminal.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
+```
+Sphere/
+├── client/ # React frontend
+│ ├── public/
+│ │ └── index.html # Main HTML file
+│ ├── src/
+│ │ ├── assets/ # Images, icons, media
+│ │ ├── components/ # Reusable React components
+│ │ ├── pages/ # Pages like Feed, Profile, Login
+│ │ ├── state/ # Redux slices & store
+│ │ ├── App.js # Main App component
+│ │ └── index.js # Entry point for React
+│ └── package.json # Frontend dependencies
+├── server/ # Express backend
+│ ├── controllers/ # API controllers
+│ ├── middleware/ # Authentication & error handling
+│ ├── models/ # MongoDB schemas
+│ ├── routes/ # Express routes
+│ ├── utils/ # Helper functions
+│ ├── .env # Environment variables
+│ └── server.js # Backend entry point
+├── .gitignore # Files to ignore in Git
+└── README.md # Project documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+## Technologies Used
 
-## Learn More
+- **Frontend**:  
+  - React.js  
+  - Material-UI (MUI)  
+  - Redux Toolkit  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Backend**:  
+  - Node.js  
+  - Express.js  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Database**:  
+  - MongoDB  
 
-### Code Splitting
+- **Authentication & Security**:  
+  - JWT (JSON Web Tokens)  
+  - bcrypt  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Media & Storage**:  
+  - Cloudinary (optional)  
 
-### Analyzing the Bundle Size
+- **Other Libraries**:  
+  - Axios (API calls)  
+  - react-router-dom (routing)  
+  - Formik & Yup (form validation)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Core Features**:  
+  - User signup/login/logout  
+  - Profile management  
+  - Post creation, edit, delete  
+  - Likes, comments, shares  
+  - Friends/follow system  
+  - Profile analytics (views & impressions)  
+  - Responsive UI
+ 
+## Acknowledgements
 
-### Making a Progressive Web App
+- [Material-UI](https://mui.com/) – For providing a modern and responsive React UI framework.  
+- [React.js Documentation](https://reactjs.org/docs/getting-started.html) – For React guidance and best practices.  
+- [Redux Toolkit](https://redux-toolkit.js.org/) – For state management patterns and examples.  
+- [MongoDB](https://www.mongodb.com/) – For database design and queries.  
+- [Multer](https://github.com/expressjs/multer) – For handling file uploads in Node.js.  
+- [Stack Overflow](https://stackoverflow.com/) – For community support and coding solutions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
