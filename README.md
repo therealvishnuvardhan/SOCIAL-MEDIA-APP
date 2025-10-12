@@ -4,6 +4,10 @@ Welcome to the **Sphere The Connections Beyond World** project! This repository 
 engage** with friends and communities. Leveraging a **MERN stack architecture** and rich **interactive features**, Sphere ensures users can share posts, follow 
 friends, like and comment on content, and explore analytics in an intuitive and seamless way.
 
+## Note :
+In the Navbar , the dark/light , logout button , and navigate to homapge buttn ( which is app name Sphere ) are functionble , remaining Notification button , Messages button , About button are just for UI demo .
+   
+
 ## Table of Contents
 - [Features](#features)
 - [Prerequisites](#prerequisites)
