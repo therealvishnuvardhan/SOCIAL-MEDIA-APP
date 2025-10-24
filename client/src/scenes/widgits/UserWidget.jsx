@@ -54,8 +54,7 @@ const UserWidget = ({ userId, picturePath }) => {
   };
   
   const profileViewsRandom = getRandomNumber(1, 100000);
-  const postImpressionsRandom = getRandomNumber(1, 100000);
-
+  const postImpressionsRandom = getRandomNumber(1, profileViewsRandom);
 
   return (
     <WidgetWrapper>
@@ -115,7 +114,7 @@ const UserWidget = ({ userId, picturePath }) => {
           </Typography>
         </FlexBetween>
         <FlexBetween>
-          <Typography color={medium}> Number of Impressions of your post : {postImpressionsRandom}</Typography>
+          <Typography color={medium}> Number of Impressions of your profile : {postImpressionsRandom}</Typography>
           <Typography color={main} fontWeight="500">
             {impressions}
           </Typography>

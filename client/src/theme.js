@@ -15,92 +15,93 @@ export const colorTokens = {
     900: "#0A0A0A",
     1000: "#000000",
   },
-  primary: {
-    50: "#E6FBFF",
-    100: "#CCF7FE",
-    200: "#99EEFD",
-    300: "#66E6FC",
-    400: "#33DDFB",
-    500: "#00D5FA",
-    600: "#00A0BC",
-    700: "#006B7D",
-    800: "#00353F",
-    900: "#001519",
+
+  // Midnight Orchid (Dark)
+  midnightOrchid: {
+    background: "#11041B", // deep purple base
+    surface: "#140627",    // surface cards/navbars
+    primary: "#9A4DFF",    // bright violet
+    accent: "#E4C7FA",     // pink highlight
+    textMain: "#E3DAF9",   // main text
+    textSecondary: "#B69FD8", // muted text
+  },
+
+  // Arctic Night (Light)
+  arcticNight: {
+    background: "#E8F0F7", // very light blue-gray
+    surface: "#D1DEE9",    // cards/navbars
+    primary: "#3C6E71",    // teal-green accent
+    accent: "#284B63",     // deep teal
+    textMain: "#1E1E1E",   // main text
+    textSecondary: "#4A4A4A", // secondary text
   },
 };
 
-// mui theme settings
+// MUI theme settings
 export const themeSettings = (mode) => {
+  const colors = colorTokens;
+  const isDark = mode === "dark";
+
   return {
     palette: {
-      mode: mode,
-      ...(mode === "dark"
+      mode,
+      ...(isDark
         ? {
-            // palette values for dark mode
+            // 🌙 Midnight Orchid
             primary: {
-              dark: colorTokens.primary[200],
-              main: colorTokens.primary[500],
-              light: colorTokens.primary[800],
+              dark: colors.midnightOrchid.accent,
+              main: colors.midnightOrchid.primary,
+              light: colors.midnightOrchid.surface,
             },
             neutral: {
-              dark: colorTokens.grey[100],
-              main: colorTokens.grey[200],
-              mediumMain: colorTokens.grey[300],
-              medium: colorTokens.grey[400],
-              light: colorTokens.grey[700],
+              dark: colors.midnightOrchid.textMain,
+              main: colors.midnightOrchid.textSecondary,
+              mediumMain: colors.midnightOrchid.primary,
+              medium: colors.midnightOrchid.accent,
+              light: colors.midnightOrchid.surface,
             },
             background: {
-              default: colorTokens.grey[900],
-              alt: colorTokens.grey[800],
+              default: colors.midnightOrchid.background,
+              alt: colors.midnightOrchid.surface,
+            },
+            text: {
+              primary: colors.midnightOrchid.textMain,
+              secondary: colors.midnightOrchid.textSecondary,
             },
           }
         : {
-            // palette values for light mode
+            // ❄️ Arctic Night
             primary: {
-              dark: colorTokens.primary[700],
-              main: colorTokens.primary[500],
-              light: colorTokens.primary[50],
+              dark: colors.arcticNight.accent,
+              main: colors.arcticNight.primary,
+              light: colors.arcticNight.surface,
             },
             neutral: {
-              dark: colorTokens.grey[700],
-              main: colorTokens.grey[500],
-              mediumMain: colorTokens.grey[400],
-              medium: colorTokens.grey[300],
-              light: colorTokens.grey[50],
+              dark: colors.arcticNight.textMain,
+              main: colors.arcticNight.textSecondary,
+              mediumMain: colors.arcticNight.primary,
+              medium: colors.arcticNight.accent,
+              light: colors.arcticNight.surface,
             },
             background: {
-              default: colorTokens.grey[10],
-              alt: colorTokens.grey[0],
+              default: colors.arcticNight.background,
+              alt: colors.arcticNight.surface,
+            },
+            text: {
+              primary: colors.arcticNight.textMain,
+              secondary: colors.arcticNight.textSecondary,
             },
           }),
     },
     typography: {
       fontFamily: ["Rubik", "sans-serif"].join(","),
       fontSize: 12,
-      h1: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 40,
-      },
-      h2: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 32,
-      },
-      h3: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 24,
-      },
-      h4: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 20,
-      },
-      h5: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 16,
-      },
-      h6: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 14,
-      },
+      h1: { fontSize: 40 },
+      h2: { fontSize: 32 },
+      h3: { fontSize: 24 },
+      h4: { fontSize: 20 },
+      h5: { fontSize: 16 },
+      h6: { fontSize: 14 },
     },
   };
 };

@@ -33,6 +33,7 @@ const MyPostWidget = ({ picturePath }) => {
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
+  const posts = useSelector((state) => state.posts || []);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const mediumMain = palette.neutral.mediumMain;
@@ -44,21 +45,23 @@ const MyPostWidget = ({ picturePath }) => {
     const formData = new FormData();
     formData.append("userId", _id);
     formData.append("description", post);
-    if (image) {
-      formData.append("picture", image);
-    }
+    if (image) formData.append("picture", image);
 
     try {
       const response = await fetch(`http://localhost:3001/posts`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
-        body: formData, // no content-type header here
+        body: formData,
       });
 
       if (!response.ok) throw new Error("Failed to post");
 
-      const posts = await response.json();
-      dispatch(setPosts({ posts }));
+      const newPost = await response.json(); // backend should return only the created post
+
+      // Add the new post to Redux immediately
+      dispatch(setPosts({ posts: [newPost, ...posts] }));
+
+      // Reset form
       setImage(null);
       setPost("");
       setIsImage(false);

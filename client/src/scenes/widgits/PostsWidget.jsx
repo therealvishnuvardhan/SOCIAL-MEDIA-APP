@@ -2,6 +2,7 @@ import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import PostWidget from "./PostWidget";
+import { Typography } from "@mui/material";
 
 const PostsWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
@@ -9,21 +10,32 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
 
   const getPosts = useCallback(async () => {
-    const response = await fetch("http://localhost:3001/posts", {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await response.json();
-    if (Array.isArray(data)) dispatch(setPosts({ posts: data }));
+    try {
+      const response = await fetch("http://localhost:3001/posts", {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await response.json();
+      if (Array.isArray(data)) dispatch(setPosts({ posts: data }));
+    } catch (err) {
+      console.error("Error fetching posts:", err);
+    }
   }, [token, dispatch]);
 
   const getUserPosts = useCallback(async () => {
-    const response = await fetch(`http://localhost:3001/posts/${userId}/posts`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await response.json();
-    if (Array.isArray(data)) dispatch(setPosts({ posts: data }));
+    try {
+      const response = await fetch(
+        `http://localhost:3001/posts/${userId}/posts`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const data = await response.json();
+      if (Array.isArray(data)) dispatch(setPosts({ posts: data }));
+    } catch (err) {
+      console.error("Error fetching user posts:", err);
+    }
   }, [userId, token, dispatch]);
 
   useEffect(() => {
@@ -31,7 +43,8 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     else getPosts();
   }, [getPosts, getUserPosts, isProfile]);
 
-  if (!Array.isArray(posts)) return <div>No posts to display.</div>;
+  if (!Array.isArray(posts) || posts.length === 0)
+    return <Typography>No posts to display.</Typography>;
 
   return (
     <>

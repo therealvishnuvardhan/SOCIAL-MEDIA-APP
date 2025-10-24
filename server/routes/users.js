@@ -1,14 +1,16 @@
 import express from "express";
-
 import {
   getUser,
   getUserFriends,
   addRemoveFriend,
+  searchUsers,
 } from "../controllers/users.js";
-
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
+
+/* ✅ SEARCH USERS — keep this ABOVE the dynamic routes */
+router.get("/search", verifyToken, searchUsers);
 
 /* READ */
 router.get("/:id", verifyToken, getUser);

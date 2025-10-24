@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   mode: "light",
-  user: null,
+  user: null, // will be set on login
   token: null,
   posts: [],
 };
@@ -15,7 +15,13 @@ const authSlice = createSlice({
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     setLogin: (state, action) => {
-      state.user = action.payload.user;
+      // Ensure friends is always an array
+      state.user = {
+        ...action.payload.user,
+        friends: Array.isArray(action.payload.user.friends)
+          ? action.payload.user.friends
+          : [],
+      };
       state.token = action.payload.token;
     },
     setLogout: (state) => {
@@ -34,13 +40,22 @@ const authSlice = createSlice({
     },
     setFriends: (state, action) => {
       if (state.user) {
-        state.user.friends = action.payload.friends;
+        // Always make friends an array
+        state.user.friends = Array.isArray(action.payload.friends)
+          ? action.payload.friends
+          : [];
       }
     },
   },
 });
 
-export const { setMode, setLogin, setLogout, setPosts, updatePost, setFriends } =
-  authSlice.actions;
+export const {
+  setMode,
+  setLogin,
+  setLogout,
+  setPosts,
+  updatePost,
+  setFriends,
+} = authSlice.actions;
 
 export default authSlice.reducer;
