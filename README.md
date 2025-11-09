@@ -4,11 +4,14 @@ Welcome to the **Sphere The Connections Beyond World** project! This repository 
 engage** with friends and communities. Leveraging a **MERN stack architecture** and rich **interactive features**, Sphere ensures users can share posts, follow 
 friends, like and comment on content, and explore analytics in an intuitive and seamless way.
 
-## Note :
-1. In the Navbar , the dark/light , logout button , and navigate to homapge buttn ( which is app name Sphere ) are functionble , remaining Notification button , Messages button , About button are just for UI demo .
-2. In the Post Widgit only .jpg , .png are acceptble but not .mp4 , .gif .
-3. As it is a Simple Mini Social Media Feed , it contains all the basic and required things .
+## Updates :
+1. A fully working Search bar which can be used to search up your freinds and other people on database.
+2. Light / Dark themes are changed to more vibrant and ascthetic color pallets.
+3. Navbar buttons are fully working.
 
+## Note:
+1. Only .jpeg/jpg , .png files are supportble to upload.
+2. Texting each other with other users is not possible as this webiste is not globally published.
    
 
 ## Table of Contents
