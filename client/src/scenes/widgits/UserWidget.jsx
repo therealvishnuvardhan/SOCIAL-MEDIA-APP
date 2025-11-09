@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const UserWidget = ({ userId, picturePath }) => {
   const [user, setUser] = useState(null);
   const { palette } = useTheme();
@@ -52,7 +51,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const getRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
-  
+
   const profileViewsRandom = getRandomNumber(1, 100000);
   const postImpressionsRandom = getRandomNumber(1, profileViewsRandom);
 
@@ -103,18 +102,19 @@ const UserWidget = ({ userId, picturePath }) => {
       <Divider />
 
       {/* THIRD ROW */}
-
-      
-
       <Box p="1rem 0">
         <FlexBetween mb="0.5rem">
-          <Typography color={medium}> Number of Users Who's viewed your profile : {profileViewsRandom}</Typography>
+          <Typography color={medium}>
+            Number of Users Who's viewed your profile : {profileViewsRandom}
+          </Typography>
           <Typography color={main} fontWeight="500">
             {viewedProfile}
           </Typography>
         </FlexBetween>
         <FlexBetween>
-          <Typography color={medium}> Number of Impressions of your profile : {postImpressionsRandom}</Typography>
+          <Typography color={medium}>
+            Number of Impressions of your profile : {postImpressionsRandom}
+          </Typography>
           <Typography color={main} fontWeight="500">
             {impressions}
           </Typography>
@@ -131,7 +131,10 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src={`http://localhost:3001/assets/twitter.jpeg`} alt="twitter" />
+            <img
+              src={`http://localhost:3001/assets/twitter.jpeg`}
+              alt="twitter"
+            />
             <Box>
               <Typography color={main} fontWeight="500">
                 Twitter
@@ -144,7 +147,10 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-            <img src={`http://localhost:3001/assets/linkedin.jpeg`} alt="linkedin" />
+            <img
+              src={`http://localhost:3001/assets/linkedin.jpeg`}
+              alt="linkedin"
+            />
             <Box>
               <Typography color={main} fontWeight="500">
                 Linkedin
@@ -154,6 +160,28 @@ const UserWidget = ({ userId, picturePath }) => {
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
         </FlexBetween>
+      </Box>
+
+      {/* ✅ CHAT BUTTON */}
+      <Box mt="1.5rem">
+        <button
+          onClick={() => navigate(`/chat/${userId}`)}
+          style={{
+            width: "100%",
+            padding: "0.8rem",
+            backgroundColor: palette.primary.main,
+            color: "#fff",
+            border: "none",
+            borderRadius: "0.5rem",
+            cursor: "pointer",
+            fontWeight: "600",
+            transition: "0.3s",
+          }}
+          onMouseOver={(e) => (e.target.style.opacity = "0.85")}
+          onMouseOut={(e) => (e.target.style.opacity = "1")}
+        >
+          Chat
+        </button>
       </Box>
     </WidgetWrapper>
   );

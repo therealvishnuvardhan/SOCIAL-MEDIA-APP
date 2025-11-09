@@ -8,15 +8,18 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import http from "http"; // ✅ needed for socket.io
 
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postsRoutes from "./routes/posts.js";
+import dmRoutes from "./routes/dm.js";          // ✅ DM ROUTES
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
-import { users, posts } from "./data/index.js";
 
+// ✅ Socket handler file
+import { initSocket } from "./socket.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -24,6 +27,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
+const server = http.createServer(app);          // ✅ required to attach socket.io
 
 /* MIDDLEWARES */
 app.use(express.json());
@@ -59,16 +63,19 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postsRoutes);
+app.use("/dm", dmRoutes);                // ✅ DM routes added here
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGO_URL) // removed deprecated options
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
-    /* OPTIONAL: Add dummy data once */
-    // User.insertMany(users);
-    // Post.insertMany(posts);
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    server.listen(PORT, () =>       // ✅ use server.listen instead of app.listen
+      console.log(`Server running on port: ${PORT}`)
+    );
+
+    // ✅ Initialize socket.io
+    initSocket(server);
   })
   .catch((error) => console.log(`${error} did not connect`));
